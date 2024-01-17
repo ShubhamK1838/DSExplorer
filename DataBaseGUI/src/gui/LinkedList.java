@@ -25,7 +25,8 @@ public class LinkedList extends DS {
     cleanUp();
     rnd = new Random();
     initActionListener();
-    initOperations();
+    // initOperations();
+    loadOperations();
     head = new DList();
 
     hed = head.getHead();
@@ -133,7 +134,8 @@ public class LinkedList extends DS {
     status.removeAll();
   }
 
-  public void initOperations() {
+  @Override
+  public void loadOperations() {
     box =
       new DComboBox(
         new String[] {

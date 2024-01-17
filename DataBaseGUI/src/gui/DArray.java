@@ -17,25 +17,35 @@ public class DArray extends DS {
 
   private ArrayList<Object> list;
   private JPanel st = MainFrame.status;
-  private JPanel operation = MainFrame.operations;
-  private DButton buttons[];
   private int size;
-  private ActionListener actions;
   public static Timer tt;
 
   int max = 33;
 
   public DArray() {
-    st.removeAll();
-
+    super(); 
     st.setLayout(new FlowLayout(0, 3, 20));
     st.setAlignmentX(10);
     initAction();
-    operations();
+    setOperations(
+      new String[] {
+        "Create",
+        "Insert",
+        "Remove",
+        "Update",
+        "Reverse",
+        "Is Full",
+        "Empty",
+        "Clear",
+        "Fill",
+      }
+    );
+    loadOperations();
     st.revalidate();
     writeInfo("array");
   }
 
+  @Override
   public void initAction() {
     actions =
       new ActionListener() {
@@ -49,11 +59,29 @@ public class DArray extends DS {
             sc.equals("Empty")
           ) isEmpty(); else if (sc.equals("Update")) update(); else if (
             sc.equals("Is Full")
-          ) isFull(); else if (sc.equals("Demo")) demo();
+          ) isFull(); else if (sc.equals("Fill")) demo();
 
           if (!(size <= 0)) status();
         }
       };
+  }
+
+  @Override
+  public void loadOperations() {
+    MainFrame.operations.removeAll();
+    buttons = new DButton[operations.length];
+
+    int ind = 0;
+    for (String st : operations) {
+      buttons[ind] = new DButton(st);
+      buttons[ind].addActionListener(actions);
+      operations_panel.add(buttons[ind]);
+      if (buttons[ind].getText().equals("Create")) {
+        ind++;
+        continue;
+      }
+      buttons[ind++].setEnabled(false);
+    }
   }
 
   void update() {
@@ -101,35 +129,35 @@ public class DArray extends DS {
     }
   }
 
-  public void operations() {
-    MainFrame.operations.removeAll();
+  // public void operations() {
+  //   MainFrame.operations.removeAll();
 
-    String[] op = {
-      "Create",
-      "Insert",
-      "Remove",
-      "Update",
-      "Reverse",
-      "Is Full",
-      "Empty",
-      "Clear",
-      "Demo",
-    };
-    buttons = new DButton[op.length];
-    int ind = 0;
-    for (String st : op) {
-      buttons[ind] = new DButton(st);
-      buttons[ind].addActionListener(actions);
-      operation.add(buttons[ind]);
-      if (buttons[ind].getText().equals("Create")) {
-        ind++;
-        continue;
-      }
-      buttons[ind++].setEnabled(false);
-    }
-    MainFrame.operations.revalidate();
-    MainFrame.operations.repaint();
-  }
+  //   String[] op = {
+  //     "Create",
+  //     "Insert",
+  //     "Remove",
+  //     "Update",
+  //     "Reverse",
+  //     "Is Full",
+  //     "Empty",
+  //     "Clear",
+  //     "Demo",
+  //   };
+  //   buttons = new DButton[op.length];
+  //   int ind = 0;
+  //   for (String st : op) {
+  //     buttons[ind] = new DButton(st);
+  //     buttons[ind].addActionListener(actions);
+  //     operation.add(buttons[ind]);
+  //     if (buttons[ind].getText().equals("Create")) {
+  //       ind++;
+  //       continue;
+  //     }
+  //     buttons[ind++].setEnabled(false);
+  //   }
+  //   MainFrame.operations.revalidate();
+  //   MainFrame.operations.repaint();
+  // }
 
   public void status() {
     if (list.size() < 0) return;
