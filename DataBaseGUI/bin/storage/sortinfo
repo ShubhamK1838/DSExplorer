@@ -1,0 +1,85 @@
+Insertion Sort:
+
+Idea:
+
+Builds the sorted sequence one element at a time.
+Iterates through the unsorted portion, picking elements and placing them in the correct position in the sorted section.
+Algorithm Steps:
+
+Start with the second element and compare it with the first.
+If the second element is smaller, swap them.
+Move to the next element and insert it into its correct position in the sorted part.
+Repeat until the entire list is sorted.
+Time Complexity:
+
+Best Case: O(n) - already sorted.
+Worst Case: O(n^2) - reversed order.
+Average Case: O(n^2).
+Key Features:
+
+Simple to implement.
+Efficient for small datasets or partially sorted lists.
+In-place sorting algorithm.
+Applications:
+
+Used when the input size is small.
+Beneficial for nearly sorted data.
+Drawbacks:
+
+Inefficient for large datasets.
+Quadratic time complexity in the worst case.
+Bubble Sort:
+
+Idea:
+
+Repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+The largest unsorted element "bubbles" to the end of the list in each pass.
+Algorithm Steps:
+
+Compare adjacent elements and swap them if they are in the wrong order.
+Continue this process until the entire list is sorted.
+Time Complexity:
+
+Best Case: O(n) - already sorted.
+Worst Case: O(n^2) - reversed order.
+Average Case: O(n^2).
+Key Features:
+
+Simple and easy to understand.
+In-place sorting algorithm.
+Applications:
+
+Suitable for educational purposes.
+Rarely used in practice due to its inefficiency.
+Drawbacks:
+
+Inefficient for large datasets.
+Quadratic time complexity in the worst case.
+Selection Sort:
+
+Idea:
+
+Divides the input list into a sorted and an unsorted region.
+Repeatedly selects the smallest (or largest) element from the unsorted region and swaps it with the first unsorted element.
+Algorithm Steps:
+
+Find the minimum element in the unsorted part.
+Swap it with the first element in the unsorted part.
+Expand the sorted region and repeat until the entire list is sorted.
+Time Complexity:
+
+Best Case: O(n^2) - always the same.
+Worst Case: O(n^2) - always the same.
+Average Case: O(n^2).
+Key Features:
+
+Simple to implement.
+In-place sorting algorithm.
+Applications:
+
+Suitable for small datasets.
+Rarely used in practice for large datasets due to its inefficiency.
+Drawbacks:
+
+Quadratic time complexity in all cases.
+Not suitable for large datasets or nearly sorted lists.
