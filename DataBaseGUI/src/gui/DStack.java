@@ -17,23 +17,23 @@ import myutil.UserIn;
 
 public class DStack extends DS implements StackOperations {
 
-  static int checkob = 0;
-  JPanel operation = MainFrame.operations;
-  DButton buttons[];
-  private ActionListener actions;
-  JPanel st = MainFrame.status;
-  ArrayList<Object> list;
-  JPanel jp = new JPanel();
-  int max = 30;
-  int size = 0;
-  int x = 70;
-  int y = 200;
-  int stepx = 90;
-  int stepy = 70;
-  boolean sety = true;
-  boolean setx = true;
-  Element peeks = null;
-  int weightTime;
+  private static int checkob = 0;
+  private JPanel operation = MainFrame.operations;
+  private DButton buttons[];
+  // private ActionListener actions;
+  private JPanel st = MainFrame.status;
+  private ArrayList<Object> list;
+  private JPanel jp = new JPanel();
+  private int max = 30;
+  private int size = 0;
+  private int x = 70;
+  private int y = 200;
+  private int stepx = 90;
+  private int stepy = 70;
+  private boolean sety = true;
+  private boolean setx = true;
+  private Element peeks = null;
+  private int weightTime;
 
   public DStack() {
     MainFrame.info.removeAll();

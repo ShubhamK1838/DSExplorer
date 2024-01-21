@@ -45,35 +45,27 @@ public class LinkedList extends DS {
           String cmd = e.getActionCommand();
 
           if (cmd.equals("Run")) {
-              runCommand();
-          } else if (cmd.equals("Status")) {
-
-          } 
+            runCommand();
+          } else if (cmd.equals("Status")) {}
 
           MainFrame.currentcontainer.revalidate();
         }
       };
   }
 
-  public void runCommand()
-  {
+  public void runCommand() {
     String command = box.getSelectedItem().toString();
 
-      if(command.contains("Insert"))
-      {
-        insertNode(command);
-      }else 
-      {
-        deleteNode(command); 
-      }
+    if (command.contains("Insert")) {
+      insertNode(command);
+    } else {
+      deleteNode(command);
+    }
 
     initNodes();
-
   }
 
-
   public void insertNode(String command) {
-
     if (command.contains("Insert")) {
       String data = UserIn.getStr("Enter The Data");
       if (data == null) return;
@@ -87,30 +79,25 @@ public class LinkedList extends DS {
         head.insAfter(after, data);
       }
     }
-
   }
-  public void deleteNode(String command)
-  {
-      if(command.equals("Delete First"))
-      {
-;        head.deleteFirst();
-      }else if(command.equals("Delete End"))
-      {
-        head.deleteEnd(); 
-      }else if(command.equals("Delete After"))
-      {
-        String after = UserIn.getStr("Enter the data  which after you Delete");
-        if(after==null) return; 
-        head. deleteAfter(after); 
-      
-      }
+
+  public void deleteNode(String command) {
+    if (command.equals("Delete First")) {
+      head.deleteFirst();
+    } else if (command.equals("Delete End")) {
+      head.deleteEnd();
+    } else if (command.equals("Delete After")) {
+      String after = UserIn.getStr("Enter the data  which after you Delete");
+      if (after == null) return;
+      head.deleteAfter(after);
+    }
   }
 
   public void initNodes() {
     DNode n;
     DList l = head.getHead();
     mn.removeAll();
-    mn.repaint(); 
+    mn.repaint();
     while (l != null) {
       n = new DNode().initNode(l);
       l.node = n;
@@ -139,7 +126,6 @@ public class LinkedList extends DS {
     box =
       new DComboBox(
         new String[] {
-          
           "Delete First",
           "Delete After",
           "Delete End",
@@ -147,8 +133,7 @@ public class LinkedList extends DS {
           "Insert After",
           "Insert End",
         }
-      );
-    // box.setSize(140, 36);
+      );    
     String oper[] = new String[] { "Run", "Status", "Length", "Mid" };
 
     operationsbuttons = new DButton[oper.length + 1];

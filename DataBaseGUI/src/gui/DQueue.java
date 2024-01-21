@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import myutil.*;
 
-public class DQueue extends DS implements Operations {
+public class DQueue extends DS implements QueueOperations {
 
   private int size;
   private int left;
@@ -287,7 +287,7 @@ public class DQueue extends DS implements Operations {
   }
 }
 
-interface Operations {
+interface QueueOperations {
   // "Create", "Insert", "Remove", "Peek", "Is Full", "IsEmpty", "Clear"
   public void create();
 
