@@ -19,7 +19,6 @@ public class DQueue extends DS implements QueueOperations {
   private JPanel status;
   private ArrayList<Object> list;
   private DButton[] buttons;
-  private ActionListener actions;
   private Element tmpele;
   private int coY;
   private int coX;
@@ -29,9 +28,10 @@ public class DQueue extends DS implements QueueOperations {
   private Element empty;
 
   public DQueue() {
+    
     initMainFrame();
     initAction();
-    initOperations();
+    loadOperations(); 
     initLeft();
     initRight();
     
@@ -39,7 +39,7 @@ public class DQueue extends DS implements QueueOperations {
   }
 
   
-
+  @Override
   public void initAction() {
     actions =
       new ActionListener() {
@@ -83,7 +83,8 @@ public class DQueue extends DS implements QueueOperations {
     operation.repaint();
   }
 
-  public void initOperations() {
+  @Override
+  public void loadOperations() {
     initMainFrame();
     String[] op = {
       "Create",
@@ -95,9 +96,10 @@ public class DQueue extends DS implements QueueOperations {
       "Size",
       "Clear",
     };
+    super.setOperations(op);
     buttons = new DButton[op.length];
     int ind = 0;
-    for (String st : op) {
+    for (String st : super.operations) {
       buttons[ind] = new DButton(st);
       buttons[ind].addActionListener(actions);
       operation.add(buttons[ind]);
