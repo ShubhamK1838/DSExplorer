@@ -45,16 +45,17 @@ public class MainFrame extends JFrame {
   public MainFrame() {
     This = this;
     currentcontainer = this;
+    setIcon(); 
     // this.setUndecorated(true);
     this.setTitle("DSExplorer");
     this.setVisible(true);
     this.setDefaultCloseOperation(3);
     this.setSize(new Dimension(1130, 720));
     this.setMinimumSize(new Dimension(1130, 720));
-    // this.setResizable(false);
+    this.setResizable(false);
     this.setLocationRelativeTo(null);
     this.setLayout(new BorderLayout());
-
+    
     right = new JPanel();
 
     nav = new JPanel();
@@ -97,11 +98,11 @@ public class MainFrame extends JFrame {
     };
 
     String labels[] = new String[] {
-      "DS Explorer",
-      "Home",
-      "Dashboard",
-      "About Us",
-      "Contact",
+        "DS Explorer",
+        "Home",
+        "Dashboard",
+        "About Us",
+        "Contact",
     };
     for (String st : labels) {
       JLabel lbl = new JLabel(st);
@@ -121,12 +122,12 @@ public class MainFrame extends JFrame {
     left.setLayout(new FlowLayout(1, 20, 20));
 
     String menueop[] = {
-      "Array",
-      "Stack",
-      "Queue",
-      "Linked L",
-      "Sorting",
-      "Searching",
+        "Array",
+        "Stack",
+        "Queue",
+        "Linked L",
+        "Sorting",
+        "Searching",
     };
     DButton[] menu = new DButton[menueop.length];
     DButton ele;
@@ -143,42 +144,41 @@ public class MainFrame extends JFrame {
   }
 
   public void initActionListener() {
-    actionlistener =
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          String str = e.getActionCommand();
+    actionlistener = new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        String str = e.getActionCommand();
 
-          if (homeopen) {
-            initRightPanel();
-            homeopen = false;
-          }
-
-          if (str.equals("Linked L") && !cur.equals(str)) {
-            cur = str;
-            new LinkedList();
-          } else if (str.equals("Stack") && !cur.equals(str)) {
-            cur = str;
-            new DStack();
-          } else if (str.equals("Queue") && !cur.equals(str)) {
-            cur = str;
-            new DQueue();
-          } else if (str.equals("Home") && !cur.equals(str)) {
-            cur = str;
-            initHome();
-          } else if (str.equals("Sorting") && !cur.equals(str)) {
-            cur = str;
-            new DSorting();
-          } else if (str.equals("Searching") && !cur.equals(str)) {
-            cur = str;
-            new DSearch();
-          } else if (str.equals("Array") && !cur.equals(str)) {
-            cur = str;
-            new DArray();
-          }
-
-          This.revalidate();
+        if (homeopen) {
+          initRightPanel();
+          homeopen = false;
         }
-      };
+
+        if (str.equals("Linked L") && !cur.equals(str)) {
+          cur = str;
+          new LinkedList();
+        } else if (str.equals("Stack") && !cur.equals(str)) {
+          cur = str;
+          new DStack();
+        } else if (str.equals("Queue") && !cur.equals(str)) {
+          cur = str;
+          new DQueue();
+        } else if (str.equals("Home") && !cur.equals(str)) {
+          cur = str;
+          initHome();
+        } else if (str.equals("Sorting") && !cur.equals(str)) {
+          cur = str;
+          new DSorting();
+        } else if (str.equals("Searching") && !cur.equals(str)) {
+          cur = str;
+          new DSearch();
+        } else if (str.equals("Array") && !cur.equals(str)) {
+          cur = str;
+          new DArray();
+        }
+
+        This.revalidate();
+      }
+    };
   }
 
   public void initOp() {
@@ -208,22 +208,18 @@ public class MainFrame extends JFrame {
     info.setForeground(Color.black);
     info.setBackground(new Color(205, 196, 230));
     info.addMouseListener(
-      new MouseAdapter() {
-        public void mouseClicked(MouseEvent e) {
-          SetInfo.speed = 0;
-        }
-      }
-    );
+        new MouseAdapter() {
+          public void mouseClicked(MouseEvent e) {
+            SetInfo.speed = 0;
+          }
+        });
 
     JScrollPane jsp;
     areapanel.add(
-      jsp =
-        new JScrollPane(
-          info,
-          JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-          JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
-        )
-    );
+        jsp = new JScrollPane(
+            info,
+            JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
     jsp.setBorder(new EmptyBorder(0, 0, 0, 0));
     right.add(areapanel, BorderLayout.SOUTH);
     operations = new JPanel();
@@ -239,6 +235,11 @@ public class MainFrame extends JFrame {
     This.add(right, BorderLayout.CENTER);
     This.revalidate();
   }
+  public void setIcon()
+  {
+    ImageIcon icon=new ImageIcon("src\\icons\\icon.png"); 
+    this.setIconImage(icon.getImage());
+  }
 
   public void initHome() {
     cur = "";
@@ -247,12 +248,8 @@ public class MainFrame extends JFrame {
     right.setLayout(new BorderLayout());
     right.setBackground(Color.red);
     ImageIcon icon = new ImageIcon("src\\icons\\DS2.gif");
-
     JLabel lb = new JLabel(icon);
     lb.setBounds(40, 40, 300, 300);
-    // right.add(lb);
-    // createHomePage(right);
-
     right.revalidate();
     right.repaint();
     This.add(right);
