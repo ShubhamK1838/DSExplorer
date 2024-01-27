@@ -23,23 +23,22 @@ public class DArray extends DS {
   int max = 33;
 
   public DArray() {
-    super(); 
+    super();
     st.setLayout(new FlowLayout(0, 3, 20));
     st.setAlignmentX(10);
     initAction();
     setOperations(
-      new String[] {
-        "Create",
-        "Insert",
-        "Remove",
-        "Update",
-        "Reverse",
-        "Is Full",
-        "Empty",
-        "Clear",
-        "Fill",
-      }
-    );
+        new String[] {
+            "Create",
+            "Insert",
+            "Remove",
+            "Update",
+            "Reverse",
+            "Is Full",
+            "Empty",
+            "Clear",
+            "Fill",
+        });
     loadOperations();
     st.revalidate();
     writeInfo("array");
@@ -47,23 +46,32 @@ public class DArray extends DS {
 
   @Override
   public void initAction() {
-    actions =
-      new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          String sc = e.getActionCommand();
-          if (sc.equals("Insert")) insert(); else if (
-            sc.equals("Remove")
-          ) remove(); else if (sc.equals("Reverse")) reverse(); else if (
-            sc.equals("Create")
-          ) create(); else if (sc.equals("Clear")) list.clear(); else if (
-            sc.equals("Empty")
-          ) isEmpty(); else if (sc.equals("Update")) update(); else if (
-            sc.equals("Is Full")
-          ) isFull(); else if (sc.equals("Fill")) demo();
+    actions = new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        String sc = e.getActionCommand();
+        if (sc.equals("Insert"))
+          insert();
+        else if (sc.equals("Remove"))
+          remove();
+        else if (sc.equals("Reverse"))
+          reverse();
+        else if (sc.equals("Create"))
+          create();
+        else if (sc.equals("Clear"))
+          list.clear();
+        else if (sc.equals("Empty"))
+          isEmpty();
+        else if (sc.equals("Update"))
+          update();
+        else if (sc.equals("Is Full"))
+          isFull();
+        else if (sc.equals("Fill"))
+          demo();
 
-          if (!(size <= 0)) status();
-        }
-      };
+        if (!(size <= 0))
+          status();
+      }
+    };
   }
 
   @Override
@@ -96,21 +104,25 @@ public class DArray extends DS {
 
   public void remove() {
     String ele = UserIn.getStr("Enter The Index");
-    if (ele != null && Integer.parseInt(ele) < list.size()) list.remove(
-      Integer.parseInt(ele)
-    );
+    if (ele != null && Integer.parseInt(ele) < list.size())
+      list.remove(
+          Integer.parseInt(ele));
   }
 
   public void insert() {
-    String ele = JOptionPane.showInputDialog("Enter The Ele");
-    if (ele != null && this.size > list.size()) list.add(
-      ele
-    ); else JOptionPane.showMessageDialog(
-      st,
-      "Array Is Full...",
-      "Message",
-      JOptionPane.WARNING_MESSAGE
-    );
+    String ele = UserIn.getStr("Enter the element ");
+    if (ele == null) {
+      return;
+    } else if (this.size > list.size()) {
+      list.add(ele);
+    } else {
+
+      JOptionPane.showMessageDialog(
+          st,
+          "Array Is Full...",
+          "Message",
+          JOptionPane.WARNING_MESSAGE);
+    }
   }
 
   public void create() {
@@ -129,38 +141,9 @@ public class DArray extends DS {
     }
   }
 
-  // public void operations() {
-  //   MainFrame.operations.removeAll();
-
-  //   String[] op = {
-  //     "Create",
-  //     "Insert",
-  //     "Remove",
-  //     "Update",
-  //     "Reverse",
-  //     "Is Full",
-  //     "Empty",
-  //     "Clear",
-  //     "Demo",
-  //   };
-  //   buttons = new DButton[op.length];
-  //   int ind = 0;
-  //   for (String st : op) {
-  //     buttons[ind] = new DButton(st);
-  //     buttons[ind].addActionListener(actions);
-  //     operation.add(buttons[ind]);
-  //     if (buttons[ind].getText().equals("Create")) {
-  //       ind++;
-  //       continue;
-  //     }
-  //     buttons[ind++].setEnabled(false);
-  //   }
-  //   MainFrame.operations.revalidate();
-  //   MainFrame.operations.repaint();
-  // }
-
   public void status() {
-    if (list.size() < 0) return;
+    if (list.size() < 0)
+      return;
     DElement elm;
     st.removeAll();
     for (int i = 0; i < size; i++) {
@@ -199,30 +182,32 @@ public class DArray extends DS {
   }
 
   public void isFull() {
-    if (list.size() == size) JOptionPane.showMessageDialog(
-      st,
-      "Array Is Full...",
-      "Is Full",
-      JOptionPane.INFORMATION_MESSAGE
-    ); else JOptionPane.showMessageDialog(
-      st,
-      "Array Is Not Full...",
-      "Is Full",
-      JOptionPane.INFORMATION_MESSAGE
-    );
+    if (list.size() == size)
+      JOptionPane.showMessageDialog(
+          st,
+          "Array Is Full...",
+          "Is Full",
+          JOptionPane.INFORMATION_MESSAGE);
+    else
+      JOptionPane.showMessageDialog(
+          st,
+          "Array Is Not Full...",
+          "Is Full",
+          JOptionPane.INFORMATION_MESSAGE);
   }
 
   public void isEmpty() {
-    if (list.size() == 0) JOptionPane.showMessageDialog(
-      st,
-      "Array Is Empty...",
-      "Is Empty",
-      JOptionPane.INFORMATION_MESSAGE
-    ); else JOptionPane.showMessageDialog(
-      st,
-      "Array Is Not Empty...",
-      "Is Empty",
-      JOptionPane.INFORMATION_MESSAGE
-    );
+    if (list.size() == 0)
+      JOptionPane.showMessageDialog(
+          st,
+          "Array Is Empty...",
+          "Is Empty",
+          JOptionPane.INFORMATION_MESSAGE);
+    else
+      JOptionPane.showMessageDialog(
+          st,
+          "Array Is Not Empty...",
+          "Is Empty",
+          JOptionPane.INFORMATION_MESSAGE);
   }
 }
