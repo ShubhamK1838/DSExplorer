@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import myutil.*;
 
+
 public class DSearch extends DS{
 
   private int size;
@@ -50,6 +51,7 @@ public class DSearch extends DS{
           String sc = e.getActionCommand();
           if (sc.equals("Create")) {
             create();
+            new TakeList(size); 
           } else if (sc.equals("Insert")) {
             Insert("user");
           } else if (sc.equals("Clear")) {

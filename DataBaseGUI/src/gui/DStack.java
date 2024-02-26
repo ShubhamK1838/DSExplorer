@@ -20,7 +20,6 @@ public class DStack extends DS implements StackOperations {
   private static int checkob = 0;
   private JPanel operation = MainFrame.operations;
   private DButton buttons[];
-  // private ActionListener actions;
   private JPanel st = MainFrame.status;
   private ArrayList<Object> list;
   private JPanel jp = new JPanel();
@@ -106,7 +105,7 @@ public class DStack extends DS implements StackOperations {
     JLabel lbl = new JLabel(ico);
     top.setBounds(2, 7, 25, 16);
     lbl.setBounds(25, 2, 30, 30);
-    top.setFont(new Font(Font.MONOSPACED, Font.BOLD, 14));
+    top.setFont(new Font(Font.MONOSPACED, Font.BOLD, 12));
     jp.add(lbl);
     jp.add(top);
     jp.setSize(60, 30);

@@ -2,14 +2,17 @@ package myutil;
 
 import javax.swing.JOptionPane;
 
+
 public class UserIn {
 
   public static String getStr(String msg) {
     String str = JOptionPane.showInputDialog(null, msg);
-    if (str == null) return null;
+    if (str == null)
+      return null;
     if (!(str.isBlank() || str.isEmpty() || str.length() <= 0)) {
       return str;
-    } else return null;
+    } else
+      return null;
   }
 
   public static int getInt(String msg) {
@@ -27,4 +30,5 @@ public class UserIn {
       return -1;
     }
   }
+
 }
